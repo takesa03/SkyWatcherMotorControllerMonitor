@@ -82,7 +82,7 @@
             // serialPortOut
             // 
             this.serialPortOut.BaudRate = 115200;
-            this.serialPortOut.PortName = "COM4";
+            this.serialPortOut.PortName = "COM3";
             this.serialPortOut.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPortOut_DataReceived);
             // 
             // comboBoxPortIn

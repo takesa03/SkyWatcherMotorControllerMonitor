@@ -269,8 +269,11 @@ namespace SkyWatcherMotorControllerMonitor
         private long DecodeSkyWatcherHexToLong(string hex)
         {
             // 入力チェック：6文字または8文字の16進文字列
-            if (hex.Length != 6 && hex.Length != 8)
-                throw new ArgumentException("6桁または8桁の16進文字列が必要です");
+            //if (hex.Length != 6 && hex.Length != 8)
+            //    throw new ArgumentException("6桁または8桁の16進文字列が必要です");
+            if (hex.Length % 2 != 0)
+                throw new ArgumentException("偶数桁の16進文字列が必要です");
+
 
             // 2文字ずつ分割してバイト順を逆にする（リトルエンディアン）
             var bytes = new List<string>();
@@ -289,8 +292,10 @@ namespace SkyWatcherMotorControllerMonitor
         private long DecodeBigEndianHexToLong(string hex)
         {
             // 入力チェック：6文字または8文字の16進文字列
-            if (hex.Length != 6 && hex.Length != 8)
-                throw new ArgumentException("6桁または8桁の16進文字列が必要です");
+            //if (hex.Length != 6 && hex.Length != 8)
+            //    throw new ArgumentException("6桁または8桁の16進文字列が必要です");
+            if (hex.Length % 2 != 0)
+                throw new ArgumentException("偶数桁の16進文字列が必要です");
 
             // そのまま順番を保持して変換（ビッグエンディアン）
             return Convert.ToInt64(hex, 16);
